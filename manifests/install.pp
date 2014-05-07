@@ -1,9 +1,13 @@
 class hoccer-certs::install {
-  file { 'Hoccer CA':
-    path => '/etc/ssl/certs/hoccer_ca.cer',
+  file { '/usr/local/share/ca-certificates/hoccer_ca.crt':
     source => 'puppet:///modules/hoccer-certs/hoccer_ca.cer',
     owner => 'root',
     group => 'root',
-    mode => 644
+    mode => 644,
+    notify => Exec['update-ca-certificates']
+  }
+
+  exec { 'update-ca-certificates':
+    command => '/usr/sbin/update-ca-certificates'
   }
 }
