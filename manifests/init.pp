@@ -1,3 +1,3 @@
-class hoccer_certs {
-  include hoccer_certs::install
+class hoccer-certs {
+  include hoccer-certs::install
 }
